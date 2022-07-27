@@ -3,19 +3,35 @@ Definition of urls for hike.
 """
 
 from django.conf.urls import include, url
+from events import views
+from django.conf import settings
+from django.conf.urls.static import serve ,static
+
+from events.views import article
+
 
 # Uncomment the next two lines to enable the admin:
-# from django.contrib import admin
-# admin.autodiscover()
+from django.contrib import admin
+admin.autodiscover()
 
 urlpatterns = [
+    
+    url(r'^ckeditor/',include('ckeditor_uploader.urls')),
+    url(r'^media/(?P<path>.*)',serve,{'document_root':settings.MEDIA_ROOT}),
+
     # Examples:
-    # url(r'^$', hike.views.home, name='home'),
-    # url(r'^hike/', include('hike.hike.urls')),
+    #url(r'^$', hike.views.home, name='home'),
+    url(r'^hike/(?P<page>\d{1,3})/',views.hike ),
 
     # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    # url(r'^admin/doc/', django.contrib.admindocs.urls),
 
     # Uncomment the next line to enable the admin:
-    # url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/',admin.site.urls),
+    
+    #url(r'',admin.site.urls),
+    url(r'^events/<int:page>/',article,name = 'article'),
+    #url(r'<int:id>/<int:page>.html',article,name = 'article'),
+    
 ]
+

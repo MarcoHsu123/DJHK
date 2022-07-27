@@ -1,0 +1,45 @@
+﻿<html>
+<head>
+    <link href="{% static "css/index.css" %}" rel="stylesheet" />
+    <title>活动浏览</title>
+</head>
+
+<body>
+<header>
+    <img src="/media/banner.jpg" height="760" width="1280" style="align-content:center;" />     
+</header>
+<article>
+    <!--活动浏览-->
+    <div class="main">
+    {% for list in pageInfo.object_list %}
+        <p>
+            <a href="{% url 'detail' id list.id %}"> <img src="{{ list_artPhoto.url }}" alt="" /></a>             
+        </p>
+        <h3>
+            <a href="{% url 'detail' id list.id %} ">{{list.title}}</a>
+        </h3>
+        <p>{{list.content|safe}}</p>
+    {% endfor %}
+    </div>
+    <div class="pagelist">
+        {% if pageInfo.has_previous %}
+            <a href="{% url 'article' id pageInfo.pervious_page_number %}">上一页</a>
+        {% endif %}
+        {% if pageInfo.objext_list %}
+            {% for page in pageInfo.paginator.page_range %}
+                {% if pageInfo.number == page  %}
+                    <a href="javascript:;" class="curpage">{{page}}</a>
+                {% else %}
+                    <a href="{% url 'article' id page %}">{{page}}</a>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+        {% if pageInfo.has_next %}
+            <a href="{% url 'article' id pageInfo.next_page_number %}">下一页</a>
+        {% endif %}
+
+    </div>
+</article>
+
+</body>
+</html>

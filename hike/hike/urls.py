@@ -21,7 +21,7 @@ urlpatterns = [
 
     # Examples:
     #url(r'^$', hike.views.home, name='home'),
-    url(r'^hike/',views.hike ),
+    url(r'^hike/$',views.hike ),
     url(r'^hike/(?P<page>\d{1,3})/',views.hike ),
 
     # Uncomment the admin/doc line below to enable admin documentation:

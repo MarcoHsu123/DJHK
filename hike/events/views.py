@@ -19,12 +19,15 @@ def article(request,page=1):
 
 def hike(request,page=1):
     ats = events.objects.filter(status=0).order_by('-createTime')
+    
+    p=ats[0]
     paginator = Paginator(ats,10)
-    try:
-        pageInfo = paginator.page(page)
-    except PageNotAnInteger :
-        pageInfo = paginator.page(1)
-    except EmptyPage :
-        pageInfo = paginator.page(paginator.num_pages)
 
-    return HttpResponse(page)
+    #try:
+    #    pageInfo = paginator.page(page)
+    #except PageNotAnInteger :
+    #    pageInfo = paginator.page(1)
+    #except EmptyPage :
+    #    pageInfo = paginator.page(paginator.num_pages)
+
+    return HttpResponse(p)

@@ -40,7 +40,11 @@ class events(models.Model):
     modifyTime = models.DateTimeField(auto_now=True)
     relesseTime = models.DateTimeField(blank=True,verbose_name='发布时间',null= True)
     status = models.SmallIntegerField(default = 0)
-    
+
+
+    def __str__(self):
+        return self.title
+
     class Meta:
         verbose_name_plural = '活动管理'
         

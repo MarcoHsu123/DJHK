@@ -1,5 +1,6 @@
 ﻿<html>
 <head>
+    {% load static %}
     <link href="{% static "css/e_index.css" %}" rel="stylesheet" />
     <title>活动浏览</title>
 </head>
@@ -13,10 +14,11 @@
     <div class="main">
     {% for list in pageInfo.object_list %}
         <p>
-            <a href="{% url 'detail' id list.id %}"> <img src="{{ list_artPhoto.url }}" alt="" /></a>             
+            <a href=" "> <img src="{{ list_artPhoto.url }}" alt="" /></a>     
+           {#{% url 'detail' id list.id %}#}
         </p>
         <h3>
-            <a href="{% url 'detail' id list.id %} ">{{list.title}}</a>
+            <a href=" ">{{list.title}}</a>
         </h3>
         <p>{{list.content|safe}}</p>
     {% endfor %}

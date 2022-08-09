@@ -31,7 +31,8 @@ urlpatterns = [
     url(r'^admin/',admin.site.urls),
     
     #url(r'',admin.site.urls),
-    url(r'^events/<int:page>/',article,name = 'article'),
+    url(r'^events/$',article,name = 'article'),
+    url(r'^events/(?P<page>\d{1,3})/',article,name = 'article'),
     #url(r'<int:id>/<int:page>.html',article,name = 'article'),
     
 ]

@@ -1,7 +1,7 @@
 ﻿<html>
 <head>
     {% load static %}
-    <link href="{% static "css/e_index.css" %}" rel="stylesheet" />
+    <link href="{% static "events/css/e_index.css" %}" rel="stylesheet" />
     <title>活动浏览</title>
 </head>
 
@@ -12,32 +12,28 @@
 <article>
     <!--活动浏览-->
     <div class="main">
-    {% for list in pageInfo.object_list %}
-        <p>
-            <a href=" "> <img src="{{ list_artPhoto.url }}" alt="" /></a>     
-           {#{% url 'detail' id list.id %}#}
-        </p>
+    {% for list in pageInfo.object_list %}   
         <h3>
-            <a href=" ">{{list.title}}</a>
+            <a href=" {% url 'detail' list.id  %} " target="_blank">{{list.title}}</a>
         </h3>
         <p>{{list.content|safe}}</p>
     {% endfor %}
     </div>
     <div class="pagelist">
         {% if pageInfo.has_previous %}
-            <a href="{% url 'article' id pageInfo.pervious_page_number %}">上一页</a>
+            <a href="{% url 'article' pageInfo.previous_page_number %}">上一页</a>
         {% endif %}
-        {% if pageInfo.objext_list %}
+        {% if pageInfo.object_list %}
             {% for page in pageInfo.paginator.page_range %}
                 {% if pageInfo.number == page  %}
-                    <a href="javascript:;" class="curpage">{{page}}</a>
+                    <a href="javascript:;" class="curpage">{{ page }}</a>
                 {% else %}
-                    <a href="{% url 'article' id page %}">{{page}}</a>
+                    <a href="{% url 'article'  page %}">{{ page }}</a>
                 {% endif %}
             {% endfor %}
         {% endif %}
         {% if pageInfo.has_next %}
-            <a href="{% url 'article' id pageInfo.next_page_number %}">下一页</a>
+            <a href="{% url 'article' pageInfo.next_page_number %}">下一页</a>  
         {% endif %}
 
     </div>

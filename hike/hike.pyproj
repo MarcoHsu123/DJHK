@@ -49,6 +49,7 @@
   <ItemGroup>
     <Content Include="events\css\e_index.css" />
     <Content Include="events\templates\article.html" />
+    <Content Include="events\templates\detail.html" />
     <Content Include="libman.json" />
     <Content Include="requirements.txt" />
   </ItemGroup>

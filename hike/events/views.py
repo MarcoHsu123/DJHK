@@ -5,9 +5,9 @@ from .models import events
 
 # Create your views here.
 
-def article(request,page=1):
+def article(request,page=2):
     ats = events.objects.filter(status=0).order_by('-createTime')
-    paginator = Paginator(ats,10)
+    paginator = Paginator(ats,1)
     try:
         pageInfo = paginator.page(page)
     except PageNotAnInteger :
@@ -20,14 +20,13 @@ def article(request,page=1):
 def hike(request,page=1):
     ats = events.objects.filter(status=0).order_by('-createTime')
     
-    p=ats[0]
-    paginator = Paginator(ats,10)
+    paginator = Paginator(ats,1)
 
-    #try:
-    #    pageInfo = paginator.page(page)
-    #except PageNotAnInteger :
-    #    pageInfo = paginator.page(1)
-    #except EmptyPage :
-    #    pageInfo = paginator.page(paginator.num_pages)
+    pageInfo = paginator.page(page)
 
-    return HttpResponse(p)
+    return HttpResponse(pageInfo.number)
+
+def detail(request,eid):
+    det=events.objects.filter(id=eid).first()
+
+    return render(request,'detail.html',locals())

@@ -11,7 +11,7 @@ class playerAdmin(admin.ModelAdmin):
 
 
 class eventsAdmin(admin.ModelAdmin):
-    list_display = ('title','fromCity','toCity','destination','numbers','startDate','endDate','departTime','relesseTime')
+    list_display = ('title','fromCity','toCity','destination','numbers','startDate','endDate','departTime','createTime','relesseTime')
     fields = ('title','fromCity','toCity','destination','numbers','startDate','endDate','departTime','type','artPhoto','content')
     ordering = ['-relesseTime']
 

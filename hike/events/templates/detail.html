@@ -4,7 +4,8 @@
 <head>
     {% load static %}
     <meta charset="utf-8" />
-    <link href="{% static "events/css/e_index.css" %}" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="{% static "events/css/e_index.css" %}">
+
     <title>活动浏览 - {{ det.title }}</title>
 </head>
 <body>
@@ -13,9 +14,13 @@
             <li>活动名称：{{ det.title }}</li>
             <li>出发城市：{{ det.fromCity }}</li>
             <li>目的城市：{{ det.toCity }}</li><li>目的地：{{ det.destination }}</li>
+            <li>行程计划：{{det.startDate}} 至 {{det.endDate}} </li>
+            <li>集合时间：{{det.departTime}}</li>
+            {#<li>活动类型：{{det.type}}</li>#}
+            <li>人数限制：{{ det.numbers }}</li>
             <li>活动介绍：</li>
         </ul>
-        <p>{{ det.content|safe }}</p>
+         <p>{{ det.content|safe }}</p>
 
     </div>
 

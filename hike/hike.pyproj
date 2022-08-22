@@ -47,7 +47,6 @@
     <Compile Include="hike\wsgi.py" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="events\css\e_index.css" />
     <Content Include="events\templates\article.html" />
     <Content Include="events\templates\detail.html" />
     <Content Include="libman.json" />
@@ -56,7 +55,6 @@
   <ItemGroup>
     <Folder Include="events\" />
     <Folder Include="events\migrations\" />
-    <Folder Include="events\css\" />
     <Folder Include="events\templates\" />
     <Folder Include="hike\" />
     <Folder Include="media\" />

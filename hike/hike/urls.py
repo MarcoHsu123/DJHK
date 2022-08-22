@@ -7,6 +7,7 @@ from events import views
 from django.conf import settings
 from django.conf.urls.static import serve ,static
 
+
 from events.views import article , detail
 
 
@@ -18,6 +19,7 @@ urlpatterns = [
     
     url(r'^ckeditor/',include('ckeditor_uploader.urls')),
     url(r'^media/(?P<path>.*)',serve,{'document_root':settings.MEDIA_ROOT}),
+    
 
     # Examples:
     #url(r'^$', hike.views.home, name='home'),
@@ -31,6 +33,9 @@ urlpatterns = [
     url(r'^admin/',admin.site.urls),
     
     #url(r'',admin.site.urls),
+
+    #events url
+    url(r'$',article,name = 'article'),
     url(r'^events/$',article,name = 'article'),
     url(r'^events/(?P<page>\d{1,3})/',article,name = 'article'),
 

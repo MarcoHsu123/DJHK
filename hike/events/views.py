@@ -5,7 +5,7 @@ from .models import events
 
 # Create your views here.
 
-def article(request,page=2):
+def article(request,page=1):
     ats = events.objects.filter(status=0).order_by('-createTime')
     paginator = Paginator(ats,1)
     try:

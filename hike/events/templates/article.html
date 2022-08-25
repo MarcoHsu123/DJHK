@@ -12,12 +12,22 @@
 <article>
     <!--活动浏览-->
     <div class="main">
+        <ul class="dt">
+            <li class="dt1">活动</li>
+            <li>出发城市</li>
+            <li>目的地</li>
+            <li>集合时间</li>
+            <li>发布时间</li>
+        </ul>
+        <ul>
     {% for list in pageInfo.object_list %}   
-        <h3>
-            <a href=" {% url 'detail' list.id  %} " target="_blank">{{list.title}}</a>
-        </h3>
-        <p>{{list.content|safe}}</p>
+        <li><a href=" {% url 'detail' list.id  %} " target="_blank">{{list.title}}</a></li>
+        <li>{{ list.fromCity }}</li>
+        <li>{{ list.destination }}</li>
+        <li>{{ list.departTime|date }}</li>
+        <li>{{ list.createTime|date }}</li>
     {% endfor %}
+        </ul>
     </div>
     <div class="pagelist">
         {% if pageInfo.has_previous %}

@@ -7,7 +7,7 @@ from .models import events
 
 def article(request,page=1):
     ats = events.objects.filter(status=0).order_by('-createTime')
-    paginator = Paginator(ats,1)
+    paginator = Paginator(ats,2)
     try:
         pageInfo = paginator.page(page)
     except PageNotAnInteger :

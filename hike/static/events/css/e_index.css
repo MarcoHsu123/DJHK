@@ -1,8 +1,15 @@
 body
 {
     font:10px;
-    padding-left:30px;
+    padding-left:25px;
 }
-div {
-    font:10px;
+.main .dt {
+    width: 980px;
+    height: 20px;
+    background-color: #e4e4e4 ;
+    display:flex;
+    flex-flow: row;
+}
+.dt1{
+    width:300px;
 }

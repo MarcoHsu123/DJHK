@@ -1,14 +1,15 @@
 ﻿<!DOCTYPE html>
-
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     {% load static %}
-    <meta charset="utf-8" />
-    <link rel="stylesheet" type="text/css" href="{% static "events/css/e_index.css" %}">
+    <link href="{% static "events/css/e_index.css" %}" rel="stylesheet" />
 
-    <title>活动浏览 - {{ det.title }}</title>
+    <title>活动详情 - {{ det.title }}</title>
 </head>
 <body>
+    <header>
+    <div style="background:url(/media/top-bg.jpg) no-repeat ;height:230px; width:980px; "> <span>HIKE</span></div>
+    </header>
     <div class="dt">
         <ul >
             <li>活动名称：{{ det.title }}</li>

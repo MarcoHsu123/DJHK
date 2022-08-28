@@ -7,27 +7,29 @@
 
 <body>
 <header>
-    <img src="/media/top-bg.jpg" height="230" width="980" style="align-content:center;" />     
+    <div style="background:url(/media/top-bg.jpg) no-repeat ;height:230px; width:980px; "> <span>HIKE</span></div>
 </header>
 <article>
     <!--活动浏览-->
     <div class="main">
         <ul class="dt">
             <li class="dt1">活动</li>
-            <li>出发城市</li>
-            <li>目的地</li>
-            <li>集合时间</li>
-            <li>发布时间</li>
+            <li class="dt2">出发城市</li>
+            <li class="dt3">目的地</li>
+            <li class="dt4">集合时间</li>
+            <li class="dt5">发布时间</li>
         </ul>
-        <ul>
+        
     {% for list in pageInfo.object_list %}   
-        <li><a href=" {% url 'detail' list.id  %} " target="_blank">{{list.title}}</a></li>
-        <li>{{ list.fromCity }}</li>
-        <li>{{ list.destination }}</li>
-        <li>{{ list.departTime|date }}</li>
-        <li>{{ list.createTime|date }}</li>
-    {% endfor %}
+        <ul>
+        <li class="dt1"><a href=" {% url 'detail' list.id  %} " target="_blank">{{list.title}}</a></li>
+        <li class="dt2">{{ list.fromCity }}</li>
+        <li class="dt3">{{ list.destination }}</li>
+        <li class="dt4">{{ list.departTime|date }}</li>
+        <li class="dt5">{{ list.createTime|date }}</li>
         </ul>
+    {% endfor %}
+        
     </div>
     <div class="pagelist">
         {% if pageInfo.has_previous %}

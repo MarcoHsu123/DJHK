@@ -36,7 +36,7 @@ class events(models.Model):
     content = RichTextUploadingField(verbose_name='活动内容')
     initiator = models.CharField(max_length=20,blank = True)
     initiatorId = models.SmallIntegerField(default = 0) #models.ForeignKey(player,on_delete=models.PROTECT)
-    createTime = models.DateTimeField(auto_now_add=True)
+    createTime = models.DateTimeField(auto_now_add=True ,verbose_name='创建时间')
     modifyTime = models.DateTimeField(auto_now=True)
     relesseTime = models.DateTimeField(blank=True,verbose_name='发布时间',null= True)
     status = models.SmallIntegerField(default = 0)

@@ -1,15 +1,49 @@
 body
 {
     font:10px;
-    padding-left:25px;
+    padding-left:20px;
 }
+.main ul {
+    width: 980px;
+    margin: 1px 0 0 0;
+    padding: 0 ;
+    display:flex;
+    flex-flow: row;
+    font-size:12px;
+}
+.main li{
+    list-style:none;
+    height:20px;
+}
+
 .main .dt {
     width: 980px;
     height: 20px;
     background-color: #e4e4e4 ;
-    display:flex;
-    flex-flow: row;
 }
 .dt1{
-    width:300px;
+    width:480px;
+}
+.dt2 {
+    width: 150px;
+}
+.dt3 {
+    width: 150px;
+}
+.dt4 {
+    width: 100px;
+}
+.dt5 {
+    width: 150px;
+}
+.pagelist {
+    width: 980px;
+    margin: 1px 0 0 0;
+    text-align: right;
+
+}
+.pagelist a{
+    padding:1px;
+    border:1px;
+   
 }

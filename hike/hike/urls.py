@@ -3,6 +3,7 @@ Definition of urls for hike.
 """
 
 from django.conf.urls import include, url
+from hike.settings import STATICFILES_DIRS
 from events import views
 from django.conf import settings
 from django.conf.urls.static import serve ,static
@@ -19,6 +20,8 @@ urlpatterns = [
     
     url(r'^ckeditor/',include('ckeditor_uploader.urls')),
     url(r'^media/(?P<path>.*)',serve,{'document_root':settings.MEDIA_ROOT}),
+
+    url(r'^static/(?P<path>.*)', serve,{'document_root':settings.STATICFILES_DIRS}),
     
 
     # Examples:

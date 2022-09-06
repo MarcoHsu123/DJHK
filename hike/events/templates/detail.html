@@ -22,6 +22,14 @@
             <li>活动介绍：</li>
         </ul>
          <p>{{ det.content|safe }}</p>
+        <div class="dis">
+             {% for list in pageInfo.object_list %}   
+        <ul>
+        <li class="dt1"></li>
+       
+        </ul>
+    {% endfor %}
+        </div>
 
     </div>
 

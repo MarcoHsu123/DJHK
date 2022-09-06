@@ -22,16 +22,17 @@ body
     background-color: #e4e4e4 ;
 }
 .dt1{
-    width:480px;
+    width:460px;
+    padding-left:10px;
 }
 .dt2 {
-    width: 150px;
+    width: 100px;
 }
 .dt3 {
-    width: 150px;
+    width: 100px;
 }
 .dt4 {
-    width: 100px;
+    width: 150px;
 }
 .dt5 {
     width: 150px;

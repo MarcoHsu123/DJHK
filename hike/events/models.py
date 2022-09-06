@@ -55,21 +55,21 @@ class joinTeam(models.Model):
     playerName = models.CharField(max_length=30)
     isInit = models.BooleanField(blank=True)
     applicationTime = models.DateTimeField()
-    auditTime = models.DateTimeField(blank=True)
+    auditTime = models.DateTimeField()
     state = models.SmallIntegerField()
     
     class Meta:
         verbose_name_plural='活动组队'
 
 class discussion(models.Model):
-    messageId = models.AutoField(primary_key=True)
+    messageId = models.AutoField(verbose_name='留言ID',primary_key=True)
     eventsId = models.ForeignKey(events,on_delete=models.PROTECT)
     playerId = models.ForeignKey(player,on_delete=models.PROTECT)
-    playerName = models.CharField(max_length=30)
-    message = models.CharField(max_length=200)
-    subTime = models.DateTimeField()
-    replyWho =  models.IntegerField()
-    replyMessageId =  models.IntegerField()
+    playerName = models.CharField(verbose_name='留言者',max_length=30)
+    message = models.CharField(verbose_name='留言内容',max_length=200)
+    subTime = models.DateTimeField(verbose_name='提交时间')
+    replyWho =  models.IntegerField(blank=True,null= True)
+    replyMessageId =  models.IntegerField(blank=True,null= True)
 
     class Meta:
         verbose_name_plural='讨论组'

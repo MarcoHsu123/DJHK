@@ -26,9 +26,7 @@ urlpatterns = [
 
     # Examples:
     #url(r'^$', hike.views.home, name='home'),
-    url(r'^hike/$',views.hike ),
-    url(r'^hike/(?P<page>\d{1,3})/',views.hike ),
-
+   
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', django.contrib.admindocs.urls),
 
@@ -39,10 +37,10 @@ urlpatterns = [
 
     #events url
     url(r'$',article,name = 'article'),
-    url(r'^events/$',article,name = 'article'),
-    url(r'^events/(?P<page>\d{1,3})/',article,name = 'article'),
+    url(r'^hike/$',article,name = 'article'),
+    url(r'^hike/(?P<page>\d{1,3})/',article,name = 'article'),
 
-    url(r'^events/detail/(?P<eid>\d{1,3})/$',detail,name = 'detail')
+    url(r'^hike/detail/(?P<eid>\d{1,3})/$',detail,name = 'detail')
     
     #url(r'<int:id>/<int:page>.html',article,name = 'article'),
     

@@ -10,7 +10,7 @@ class player(models.Model):
 
 
     def __str__(self):
-        return self.playerId
+        return str(self.playerId)
     class Meta:
         verbose_name_plural = '玩家'
 

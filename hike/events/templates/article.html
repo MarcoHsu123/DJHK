@@ -11,25 +11,46 @@
 </header>
 <article>
     <!--活动浏览-->
+<!--    <div class="main">-->
+<!--        <ul class="dt">-->
+<!--            <li class="dt1">活动</li>-->
+<!--            <li class="dt2">出发城市</li>-->
+<!--            <li class="dt3">目的地</li>-->
+<!--            <li class="dt4">集合时间</li>-->
+<!--            <li class="dt5">发布时间</li>-->
+<!--        </ul>-->
+<!--        -->
+<!--    {% for list in pageInfo.object_list %}   -->
+<!--        <ul>-->
+<!--        <li class="dt1"><a href=" {% url 'detail' list.id  %} " target="_blank">{{list.title}}</a></li>-->
+<!--        <li class="dt2">{{ list.fromCity }}</li>-->
+<!--        <li class="dt3">{{ list.destination }}</li>-->
+<!--        <li class="dt4">{{ list.departTime|date }}</li>-->
+<!--        <li class="dt5">{{ list.createTime|date }}</li>-->
+<!--        </ul>-->
+<!--    {% endfor %}-->
+<!--        -->
+<!--    </div>-->
     <div class="main">
-        <ul class="dt">
-            <li class="dt1">活动</li>
-            <li class="dt2">出发城市</li>
-            <li class="dt3">目的地</li>
-            <li class="dt4">集合时间</li>
-            <li class="dt5">发布时间</li>
-        </ul>
-        
-    {% for list in pageInfo.object_list %}   
-        <ul>
-        <li class="dt1"><a href=" {% url 'detail' list.id  %} " target="_blank">{{list.title}}</a></li>
-        <li class="dt2">{{ list.fromCity }}</li>
-        <li class="dt3">{{ list.destination }}</li>
-        <li class="dt4">{{ list.departTime|date }}</li>
-        <li class="dt5">{{ list.createTime|date }}</li>
-        </ul>
-    {% endfor %}
-        
+        {% for list in pageInfo.object_list %}
+        <a style="text-decoration: none" href=" {% url 'detail' list.id  %} " target="_blank">
+            <div class="item_info">
+                <img src="/media/top-bg.jpg"/>
+                <div class="item_info_left">
+                    <div>{{list.title}}</div>
+                    <div class="item_site">
+                        <span style="margin-right: 4px">出发地:{{list.fromCity}}</span>
+                        <span>目的地:{{list.destination}}</span>
+                    </div>
+                    <div class="item_site">
+                        <span style="margin-right: 8px">出发时间:{{list.departTime}}</span>
+                        <span style="margin-right: 8px">发布时间:{{list.departTime}}</span>
+                        <span>结束时间:{{list.endDate}}</span>
+                    </div>
+                </div>
+            </div>
+        </a>
+        {% endfor %}
     </div>
     <div class="pagelist">
         {% if pageInfo.has_previous %}
@@ -52,4 +73,26 @@
 </article>
 
 </body>
+<style>
+    .main {
+        margin-top: 8px;
+    }
+    .item_info {
+        color: #000;
+        display: flex;
+        margin-bottom: 8px;
+        text-decoration: none;
+    }
+    .item_info img {
+        height: 80px;
+        width: 250px;
+        border-radius: 4px;
+        margin-right: 8px;
+    }
+    .item_site {
+        font-size: 14px;
+        color: #938d8d;
+        margin-top: 8px;
+    }
+</style>
 </html>

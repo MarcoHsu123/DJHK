@@ -2,14 +2,15 @@
 Definition of urls for hike.
 """
 
-from django.conf.urls import include, url
+# from django.conf.urls import include, url
+from django.urls import include, re_path as url
 from hike.settings import STATICFILES_DIRS
 from events import views
 from django.conf import settings
 from django.conf.urls.static import serve ,static
 
 
-from events.views import article , detail
+from events.views import article , detail, add_discussion
 
 
 # Uncomment the next two lines to enable the admin:
@@ -40,8 +41,10 @@ urlpatterns = [
     url(r'^hike/$',article,name = 'article'),
     url(r'^hike/(?P<page>\d{1,3})/',article,name = 'article'),
 
-    url(r'^hike/detail/(?P<eid>\d{1,3})/$',detail,name = 'detail')
-    
+    url(r'^hike/detail/(?P<eid>\d{1,3})/$',detail,name = 'detail'),
+
+    url('add_discussion', add_discussion)
+
     #url(r'<int:id>/<int:page>.html',article,name = 'article'),
     
 ]

@@ -7,31 +7,123 @@
     <title>活动详情 - {{ det.title }}</title>
 </head>
 <body>
+<form action="/add_discussion" method="post" style="padding: 8px">
+    {% csrf_token %}
     <header>
-    <div style="background:url(/media/top-bg.jpg) no-repeat ;height:230px; width:980px; "> <span>HIKE</span></div>
+<!--    <div style="background:url(/media/top-bg.jpg) no-repeat ;height:230px; width:980px; "> <span>HIKE</span></div>-->
     </header>
     <div class="dt">
-        <ul >
-            <li>活动名称：{{ det.title }}</li>
-            <li>出发城市：{{ det.fromCity }}</li>
-            <li>目的城市：{{ det.toCity }}</li><li>目的地：{{ det.destination }}</li>
-            <li>行程计划：{{det.startDate}} 至 {{det.endDate}} </li>
-            <li>集合时间：{{det.departTime}}</li>
-            {#<li>活动类型：{{det.type}}</li>#}
-            <li>人数限制：{{ det.numbers }}</li>
-            <li>活动介绍：</li>
-        </ul>
-         <p>{{ det.content|safe }}</p>
+        <div class="head_info">
+            <div class="activity_img"></div>
+            <div class="activity_base_info">
+                <ul>
+                    <li class="activity_name">{{ det.title }}</li>
+                    <li><span>集合点：</span>{{ det.fromCity }}&nbsp;{{det.departTime}}</li>
+                    <li><span>目的地：</span>{{ det.toCity }}&nbsp;{{ det.destination }}</li>
+                    <li><span>行程计划：</span>{{det.startDate}} 至 {{det.endDate}} </li>
+                    {#<li><span>活动类型：</span>{{det.type}}</li>#}
+                    <li><span>人数限制：</span>{{ det.numbers }}</li>
+                </ul>
+            </div>
+        </div>
+        <div style="font-weight: 600; font-size: 16px; padding-top: 16px;">活动介绍</div>
+        <p>{{ det.content|safe }}</p>
+        <div style="font-weight: 600; font-size: 16px; padding-top: 16px;">留言板</div>
         <div class="dis">
              {% for list in pageInfo.object_list %}   
-        <ul>
-        <li class="dt1"></li>
-       
-        </ul>
-    {% endfor %}
+            <ul>
+            <li class="dt1"></li>
+
+            </ul>
+            {% endfor %}
         </div>
-
+        <div class="discussions">
+            <ul style="padding: 0px;">
+            {% for item in discussion_list %}
+                <li class="discussions_item">
+                    <div class="first">
+                        <span class="name">{{item.playerName}}</span>
+                        <span class="time">{{item.subTime}}</span>
+                    </div>
+                    <div class="message">
+                        {{item.message}}
+                    </div>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+             {% csrf_token %}
+            <textarea style="width: 100%;" type="text" name="message" rows="4" maxlength="200" required placeholder="留言区">
+            </textarea>
+            <input style="display: none;" type="text" name="eventsId" value="{{det.id}}"/>
     </div>
-
+    <button type="submit">提交</button>
+</form>
 </body>
+<style>
+    .head_info {
+        display: flex;
+    }
+    .head_info .activity_img {
+        background: url(/media/top-bg.jpg);
+        height: 230px;
+        width: 480px;
+    }
+    .head_info .activity_base_info ul {
+        list-style: none;
+        margin: 0px;
+    }
+    .head_info .activity_base_info ul li:not(:first-child) {
+        margin-bottom: 4px;
+    }
+    .activity_name {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        max-height: 72px;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+    }
+    }
+    .dt ul li span {
+        width: 80px;
+    }
+    .discussions {
+        border-top: 1px solid #d3d3d3;
+    }
+    .discussions_item {
+        list-style: none;
+        margin-bottom: 8px;
+        border: 1px solid #d3d3d3;
+        border-radius: 5px;
+        padding: 8px 0px 0px 12px;
+    }
+    .discussions_item .message {
+        height: 67px;
+        color: var(--text-primary-color,rgba(0, 0, 0, .9));
+        word-wrap: break-word;
+        font-size: 14px;
+        word-wrap: break-word;
+            margin-top: 8px;
+    }
+    .first .name{
+        color: var(--text-secondary-color,rgba(0, 0, 0, .55));
+        font-weight: bold;
+        flex: 1 1 auto;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        margin-right: 5px;
+    }
+    .first .time{
+        flex: 0 0 100%;
+        font-size: 85%;
+        color: rgba(0,0,0,.55);
+        color: var(--text-secondary-color,rgba(0, 0, 0, .55));
+        line-height: 17px;
+        white-space: nowrap;
+    }
+</style>
 </html>
